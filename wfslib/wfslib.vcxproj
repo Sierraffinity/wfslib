@@ -22,32 +22,32 @@
     <ProjectGuid>{80CFDD8D-4F2E-446A-B226-42950C137911}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>wfslib</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -112,8 +112,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;_USRDLL;WFSLIB_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Projects\cryptopp860</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
@@ -122,6 +121,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;cryptlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>E:\Projects\cryptopp860\cryptopp\x64\Output\Debug\cryptlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -209,16 +211,18 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(SolutionDir)\packages\cryptopp.v140.5.6.5.2\build\native\cryptopp.v140.targets" Condition="Exists('$(SolutionDir)\packages\cryptopp.v140.5.6.5.2\build\native\cryptopp.v140.targets')" />
-    <Import Project="$(SolutionDir)\packages\cryptopp.5.6.5.4\build\native\cryptopp.targets" Condition="Exists('$(SolutionDir)\packages\cryptopp.5.6.5.4\build\native\cryptopp.targets')" />
-    <Import Project="$(SolutionDir)\packages\boost.1.64.0.0\build\native\boost.targets" Condition="Exists('$(SolutionDir)\packages\boost.1.64.0.0\build\native\boost.targets')" />
+    <Import Project="..\packages\boost.1.77.0.0\build\boost.targets" Condition="Exists('..\packages\boost.1.77.0.0\build\boost.targets')" />
+    <Import Project="..\packages\boost_filesystem-vc142.1.77.0.0\build\boost_filesystem-vc142.targets" Condition="Exists('..\packages\boost_filesystem-vc142.1.77.0.0\build\boost_filesystem-vc142.targets')" />
+    <Import Project="..\packages\boost_program_options-vc142.1.77.0.0\build\boost_program_options-vc142.targets" Condition="Exists('..\packages\boost_program_options-vc142.1.77.0.0\build\boost_program_options-vc142.targets')" />
+    <Import Project="..\packages\boost_system-vc142.1.77.0.0\build\boost_system-vc142.targets" Condition="Exists('..\packages\boost_system-vc142.1.77.0.0\build\boost_system-vc142.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\packages\cryptopp.v140.5.6.5.2\build\native\cryptopp.v140.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\cryptopp.v140.5.6.5.2\build\native\cryptopp.v140.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\packages\cryptopp.5.6.5.4\build\native\cryptopp.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\cryptopp.5.6.5.4\build\native\cryptopp.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\packages\boost.1.64.0.0\build\native\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost.1.64.0.0\build\native\boost.targets'))" />
+    <Error Condition="!Exists('..\packages\boost.1.77.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.77.0.0\build\boost.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_filesystem-vc142.1.77.0.0\build\boost_filesystem-vc142.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_filesystem-vc142.1.77.0.0\build\boost_filesystem-vc142.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_program_options-vc142.1.77.0.0\build\boost_program_options-vc142.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_program_options-vc142.1.77.0.0\build\boost_program_options-vc142.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_system-vc142.1.77.0.0\build\boost_system-vc142.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_system-vc142.1.77.0.0\build\boost_system-vc142.targets'))" />
   </Target>
 </Project>
